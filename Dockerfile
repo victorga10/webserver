@@ -28,7 +28,6 @@ RUN yum clean all
 COPY start.sh /start.sh
 RUN chmod 755 /start.sh
 
-RUN chown -R apache:apache /var/www/ && chmod -R 770 /var/www/
 RUN mkdir -p /usr/share/httpd/.composer/
 RUN chown -R apache:apache /usr/share/httpd/.composer/
 
