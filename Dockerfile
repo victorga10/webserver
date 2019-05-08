@@ -12,8 +12,8 @@ RUN yum install -y httpd-tools.x86_64 mod_ssl.x86_64 &&\
     yum install -y php php-common php-mcrypt php-cli php-curl &&\
     yum install -y php-pecl-zip php-bcmath &&\
     yum install -y php-json php-geos.x86_64 php-interbase.x86_64 &&\
-    yum install -y php-mbstring.x86_64 php-mysqlnd.x86_64 php-pdo.x86_64 php-pdo-*  &&\
-    yum install -y php-soap.x86_64  php-gd php-xml.x86_64 php-gmp.x86_64  &&\
+    yum install -y php-mbstring.x86_64 php-mysqlnd.x86_64 php-pdo.x86_64 php-pdo-* libssh2.x86_64  &&\
+    yum install -y php-soap.x86_64  php-gd php-xml.x86_64 php-gmp.x86_64 php-pecl-ssh2.x86_64  &&\
     yum clean all
 
 
