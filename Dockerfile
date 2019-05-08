@@ -24,6 +24,7 @@ RUN curl -sL https://rpm.nodesource.com/setup_12.x | bash
 RUN yum install -y nodejs && curl -o- -L https://yarnpkg.com/install.sh | bash
 RUN yum clean all
 
+COPY httpd.conf /etc/httpd/conf/httpd.conf
 
 COPY start.sh /start.sh
 RUN chmod 755 /start.sh
@@ -35,4 +36,3 @@ WORKDIR /var/www/html/
 
 CMD /start.sh
 
-##resolver o .htaccess 
