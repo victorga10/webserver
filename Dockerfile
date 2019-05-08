@@ -25,7 +25,7 @@ RUN yum install -y nodejs && curl -o- -L https://yarnpkg.com/install.sh | bash
 RUN yum clean all
 
 COPY httpd.conf /etc/httpd/conf/httpd.conf
-
+RUN  echo "umask 0000" >> /etc/sysconfig/httpd
 COPY start.sh /start.sh
 RUN chmod 755 /start.sh
 
