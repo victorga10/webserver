@@ -33,7 +33,7 @@ RUN mkdir -p /usr/share/httpd/.composer/
 RUN chown -R apache:apache /usr/share/httpd/
 
 RUN curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
-RUN rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg> &&  yum install -y yarn
+RUN rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg &&  yum install -y yarn
  
 
 WORKDIR /var/www/html/
