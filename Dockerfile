@@ -36,7 +36,7 @@ RUN curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum
 RUN rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg &&  yum install -y yarn
  
 
-WORKDIR /var/www/html/
+WORKDIR /var/www/
 
 CMD /start.sh
 
