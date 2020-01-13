@@ -1,11 +1,8 @@
 #!/bin/bash
 
+chown -R apache:apache /var/www/ && chmod -R 0775 /var/www/
 
-ln -sf /dev/stdout /var/log/httpd/access_log
-ln -sf /dev/stderr /var/log/httpd/error_log
-
-chown -R apache:apache /var/www/ && chmod -R 777 /var/www/
-
+rm /var/run/httpd/httpd.pid
 
 set -e
 
