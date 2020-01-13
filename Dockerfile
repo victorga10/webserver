@@ -29,6 +29,9 @@ RUN chmod 755 /start.sh
 RUN mkdir -p /usr/share/httpd/.composer/
 RUN chown -R apache:apache /usr/share/httpd/
 
+RUN mkdir -p /var/www/src/public_html && chown -R apache:apache /var/www/
+
+
 WORKDIR /var/www/
 
 CMD /start.sh
