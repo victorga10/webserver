@@ -1,8 +1,9 @@
 #!/bin/bash
 
-chown -R apache:apache /var/www/ && chmod -R 0775 /var/www/
-
-rm /var/run/httpd/httpd.pid
+FILE=/var/run/httpd/httpd.pid
+if test -f "$FILE"; then
+    rm  "$FILE"
+fi
 
 set -e
 
