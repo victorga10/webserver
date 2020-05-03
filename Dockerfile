@@ -2,8 +2,6 @@ FROM centos:7
 MAINTAINER serverti <atendimento@serverti.com.br>
 ENV container docker
 
-RUN groupadd -g 1000 apache
-RUN useradd -u 1000 -ms /bin/bash -g apache apache
 
 RUN	rpm --rebuilddb && yum clean all &&\
 	yum install -y iproute  python-setuptools  hostname  inotify-tools  which rsync jq telnet htop atop iotop mtr &&\
@@ -19,7 +17,7 @@ RUN	rpm --rebuilddb && yum clean all &&\
 
 
 RUN yum install -y httpd-tools.x86_64 mod_ssl.x86_64  php php-pear php-devel  php-fpm php-common php-mcrypt php-cli php-curl &&\
-    yum install -y php-pecl-zip php-zip php-bcmath unzip &&\
+    yum install -y php-pecl-zip php-zip php-bcmath unzip php-pecl-zmq.x86_64  &&\
     yum install -y php-json php-geos php-interbase &&\
     yum install -y php-mbstring php-mysqlnd php-pdo php-pdo-* libssh2  &&\
     yum install -y php-mongodb.noarch php-pecl-mongodb &&\
@@ -32,6 +30,7 @@ RUN yum install -y httpd-tools.x86_64 mod_ssl.x86_64  php php-pear php-devel  ph
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
+
 COPY start.sh /start.sh
 RUN chmod 755 /start.sh
 
@@ -39,13 +38,7 @@ COPY opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 COPY supervisord.conf /etc/supervisord.conf
 COPY www.conf /etc/php-fpm.d/www.conf
 
-
-RUN mkdir -p /usr/share/httpd/.composer/
-RUN chown -R apache:apache /usr/share/httpd/
-
-RUN mkdir -p /var/www/ && chown -R apache:apache /var/www/
-
-WORKDIR /var/www/
+WORKDIR /var/www/html
 
 EXPOSE 9000
 

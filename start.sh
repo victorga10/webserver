@@ -1,7 +1,6 @@
 #!/bin/bash
 
 
-
 DIR=/run/supervisor/
 if [ -d "$DIR" ]; then
     echo "ok..."
@@ -47,6 +46,33 @@ FILE=/run/php-fpm/php-fpm.pid
 if test -f "$FILE"; then
    rm /run/php-fpm/php-fpm.pid
 fi
+
+UID_OLD=${id -u apache}
+GID_OLD=${id -g apache}
+
+
+if [ -z "$PHP_UID" ]; then
+        usermod -u $PHP_UID -o apache
+        find / -uid $UID_OLD -type f -exec chown apache {} +
+fi
+
+
+if [ -z "$PHP_GID" ]; then
+        groupmod -g $PHP_GID -o apache
+        find / -gid $PHP_GID -type d -exec chown :apache {} +
+fi
+
+DIR=/usr/share/httpd/.composer/
+if [ -d "$DIR" ]; then
+    echo "ok..."
+        chown -R apache:apache /usr/share/httpd
+
+else
+	mkdir -p /usr/share/httpd/.composer/
+	chown -R apache:apache /usr/share/httpd
+fi
+
+
 
 
 set -e
