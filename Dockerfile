@@ -24,7 +24,7 @@ RUN yum install -y httpd-tools.x86_64 mod_ssl.x86_64  php php-pear php-devel  ph
     yum install -y php-soap  php-pecl-apcu php-pecl-apcu-devel php-gd php-xml php-gmp php-pecl-ssh2  &&\
     yum install -y php-opcache php-pecl-zendopcache php-pear-CAS php-xmlrpc php-ldap &&\
     yum install -y php-pear-Net-Curl php-pear-Net-IMAP php-imap php-phpiredis &&\
-    yum install -y wget git gcc-c++ make nano tmux &&\
+    yum install -y wget git gcc-c++ make nano tmux php-mongodb.noarch php-pecl-mongodb.x86_64 mongodb.x86_64  &&\
     yum install -y openvpn openssl &&\
     yum clean all
 
