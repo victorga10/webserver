@@ -48,13 +48,13 @@ UID_OLD=$(id -u apache)
 GID_OLD=$(id -g apache)
 
 
-if [ -z "$PHP_UID" ]; then
+if [ -n "$PHP_UID" ]; then
         usermod -u $PHP_UID -o apache
         find / -uid $UID_OLD -type f -exec chown apache {} +
 fi
 
 
-if [ -z "$PHP_GID" ]; then
+if [ -n "$PHP_GID" ]; then
         groupmod -g $PHP_GID -o apache
         find / -gid $GID_OLD -type d -exec chown :apache {} +
 fi
