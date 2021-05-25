@@ -12,8 +12,9 @@ RUN	rpm --rebuilddb && yum clean all &&\
 	yum-config-manager --enable remi-php74 &&\
         yum update -y  &&\
 	yum clean all && rm -rf /tmp/yum* &&\
-	easy_install pip &&\
-        pip install supervisor
+	yum install -y python-pip &&\
+        pip install supervisor &&\
+	pip install --upgrade pip
 
 
 RUN yum install -y httpd-tools.x86_64 mod_ssl.x86_64  php php-pear php-devel  php-fpm php-common php-mcrypt php-cli php-curl &&\
