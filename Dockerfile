@@ -1,7 +1,6 @@
 FROM centos:7
-MAINTAINER serverti <atendimento@serverti.com.br>
+LABEL maintainer="serverti <atendimento@serverti.com.br>" 
 ENV container docker
-
 
 RUN	rpm --rebuilddb && yum clean all &&\
 	yum install -y iproute  python-setuptools  hostname  inotify-tools  which rsync jq telnet htop atop iotop mtr &&\
@@ -15,7 +14,6 @@ RUN	rpm --rebuilddb && yum clean all &&\
 	yum install -y python-pip &&\
         pip install supervisor &&\
 	pip install --upgrade pip
-
 
 RUN yum install -y httpd-tools.x86_64 mod_ssl.x86_64  php php-pear php-devel  php-fpm php-common php-mcrypt php-cli php-curl &&\
     yum install -y php-pecl-zip php-zip php-bcmath unzip php-pecl-zmq.x86_64  &&\
