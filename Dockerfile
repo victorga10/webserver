@@ -3,17 +3,17 @@ LABEL maintainer="serverti <atendimento@serverti.com.br>"
 ENV container docker
 
 RUN	rpm --rebuilddb && yum clean all &&\
-	yum install -y iproute  python-setuptools  hostname  inotify-tools  which rsync jq telnet htop atop iotop mtr &&\
-	yum install -y yum-utils epel-* &&\
-	yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm &&\
-	yum-config-manager --disable remi-php54 &&\
-	yum-config-manager --disable remi-php73 &&\
-	yum-config-manager --enable remi-php74 &&\
+    yum install -y iproute  python-setuptools  hostname  inotify-tools  which rsync jq telnet htop atop iotop mtr &&\
+    yum install -y yum-utils epel-* &&\
+    yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm &&\
+    yum-config-manager --disable remi-php54 &&\
+    yum-config-manager --disable remi-php73 &&\
+    yum-config-manager --enable remi-php74 &&\
     yum update -y  &&\
-	yum clean all && rm -rf /tmp/yum* &&\
-	yum install -y python-pip &&\
+    yum clean all && rm -rf /tmp/yum* &&\
+    yum install -y python-pip &&\
     pip install supervisor &&\
-	pip install --upgrade pip
+    pip install --upgrade pip
 
 RUN yum install -y httpd-tools.x86_64 mod_ssl.x86_64  php php-pear php-devel  php-fpm php-common php-mcrypt php-cli php-curl &&\
     yum install -y php-pecl-zip php-zip php-bcmath unzip php-pecl-zmq.x86_64  &&\
