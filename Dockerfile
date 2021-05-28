@@ -2,7 +2,7 @@ FROM centos:7
 LABEL maintainer="serverti <atendimento@serverti.com.br>" 
 ENV container docker
 
-RUN	rpm --rebuilddb && yum clean all &&\
+RUN rpm --rebuilddb && yum clean all &&\
     yum install -y iproute  python-setuptools  hostname  inotify-tools  which rsync jq telnet htop atop iotop mtr &&\
     yum install -y yum-utils epel-* &&\
     yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm &&\
