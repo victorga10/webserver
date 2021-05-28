@@ -40,7 +40,7 @@ COPY httpd.conf /etc/httpd/conf/httpd.conf
 
 WORKDIR /var/www/html
 
-EXPOSE 9000
+EXPOSE 80
 
 CMD /start.sh
 
