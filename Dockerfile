@@ -36,6 +36,7 @@ RUN chmod 755 /start.sh
 COPY opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 COPY supervisord.conf /etc/supervisord.conf
 COPY www.conf /etc/php-fpm.d/www.conf
+COPY httpd.conf /etc/httpd/conf/httpd.conf
 
 WORKDIR /var/www/html
 
