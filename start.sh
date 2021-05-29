@@ -69,7 +69,9 @@ else
 	chown -R apache:apache /usr/share/httpd
 fi
 
-
+chmod -R 777 /var/www/
+chmod -R g+s /var/www/html
+setfacl -d -m o::rwx
 
 
 set -e
