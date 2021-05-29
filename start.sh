@@ -71,7 +71,7 @@ fi
 
 chmod -R 777 /var/www/
 chmod -R g+s /var/www/html
-setfacl -d -m o::rwx
+setfacl -d -m o::rwx /var/www/html
 
 
 set -e
